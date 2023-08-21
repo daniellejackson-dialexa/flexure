@@ -1,8 +1,8 @@
 import { rootContainer } from './ioc';
 import { AppHelper, info } from './helpers';
-import { Express } from 'express';
+import { Router } from 'express';
 
-export function startApp(routeFunction: (app: Express | undefined) => void) {
+export function startApp(routeFunction: (app: Router) => void) {
 	info("\n________ ___       _______      ___    ___ ___  ___  ________  _______  \n" +
 		"|\\  _____\\\\  \\     |\\  ___ \\    |\\  \\  /  /|\\  \\|\\  \\|\\   __  \\|\\  ___ \\     \n" +
 		"\\ \\  \\__/\\ \\  \\    \\ \\   __/|   \\ \\  \\/  / | \\  \\\\\\  \\ \\  \\|\\  \\ \\   __/|    \n" +

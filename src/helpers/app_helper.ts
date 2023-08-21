@@ -1,14 +1,14 @@
-import express, { Express, json, urlencoded } from 'express';
+import express, { Router, Express, json, urlencoded } from 'express';
 import { ProvideSingleton } from "../ioc";
 import { info } from "./";
 
 @ProvideSingleton(AppHelper)
 export class AppHelper {
 	private app: Express | undefined;
-	private routeRegistration: ((app: Express | undefined) => void) | undefined;
+	private routeRegistration: ((app: Router) => void) | undefined;
 	private listenPort = process.env.PORT ?? 3333;
 
-	public registerRoutes(registrationFunction: (app: Express | undefined) => void){
+	public registerRoutes(registrationFunction: (app: Router) => void){
 	    this.routeRegistration = registrationFunction;
 	    if(this.app){
 		this.routeRegistration(this.app);
