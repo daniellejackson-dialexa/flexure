@@ -10,6 +10,6 @@
 Flexure is a Spring like backend application framework for Typescript. 
 
 TLDR instructions
-npm install
-npm run build
-npm run start
+    npm install
+    npm run build
+    npm run start

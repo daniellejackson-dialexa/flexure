@@ -1,5 +1,4 @@
 import express, { Express, json, urlencoded } from 'express';
-import { RegisterRoutes } from "../generated/routes";
 import { ProvideSingleton } from "../ioc";
 import { info } from "./";
 
@@ -18,7 +17,9 @@ export class AppHelper {
 			this.app.listen(this.listenPort, () => {
 			    info(`Application listening on ${this.listenPort}`);
 			});
-			RegisterRoutes(this.app);
+			import("../generated/routes").then(routes => {
+			    routes.RegisterRoutes(this.app);
+			});
 		}
 	}
 }

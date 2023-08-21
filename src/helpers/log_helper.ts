@@ -5,7 +5,7 @@ export function debug(message: string){
     rootContainer.get(LoggingHelper).getLogger().debug(message);
 }
 
-export function warnring(message: string){
+export function warning(message: string){
     rootContainer.get(LoggingHelper).getLogger().warn(message);
 }
 
