@@ -13,6 +13,6 @@ export const ProvideSingleton = (identifier: any) => {
 
 let { lazyInject } = getDecorators(rootContainer);
 
-export const inject = lazyInject;
+export const LazyInject = lazyInject;
 
 rootContainer.load(buildProviderModule());
