@@ -34,6 +34,7 @@ exports.AppHelper = void 0;
 const express_1 = __importStar(require("express"));
 const ioc_1 = require("../ioc");
 const _1 = require("./");
+const swaggerUI = __importStar(require("swagger-ui-express"));
 let AppHelper = AppHelper_1 = class AppHelper {
     constructor() {
         var _a;
@@ -43,6 +44,12 @@ let AppHelper = AppHelper_1 = class AppHelper {
         this.routeRegistration = registrationFunction;
         if (this.app) {
             this.routeRegistration(this.app);
+        }
+    }
+    registerSwaggerDoc(swaggerDoc) {
+        this.swaggerDoc = swaggerDoc;
+        if (this.app) {
+            this.app.use(["/openapi"], swaggerUI.serve, swaggerUI.setup(swaggerDoc));
         }
     }
     start() {
@@ -56,7 +63,10 @@ let AppHelper = AppHelper_1 = class AppHelper {
                 (0, _1.info)(`Application listening on ${this.listenPort}`);
             });
             if (this.routeRegistration) {
-                this.routeRegistration(this.app);
+                this.registerRoutes(this.routeRegistration);
+            }
+            if (this.swaggerDoc) {
+                this.registerSwaggerDoc(this.swaggerDoc);
             }
         }
     }
