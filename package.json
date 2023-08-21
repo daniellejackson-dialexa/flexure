@@ -2,7 +2,11 @@
   "name": "flexure",
   "version": "1.0.0",
   "description": "Flexure Typescript Backend Framework",
-  "main": "index.ts",
+  "main": "./dist/index.js",
+  "typings": "./dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
   "scripts": {
     "build": "tsc",
     "test": "echo \"Error: no test specified\" && exit 1"
