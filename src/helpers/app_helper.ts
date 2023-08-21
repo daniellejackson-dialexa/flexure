@@ -5,10 +5,10 @@ import { info } from "./";
 @ProvideSingleton(AppHelper)
 export class AppHelper {
 	private app: Express | undefined;
-	private routeRegistration: ((app: Express | undefined) => undefined) | undefined;
+	private routeRegistration: ((app: Express | undefined) => void) | undefined;
 	private listenPort = process.env.PORT ?? 3333;
 
-	public registerRoutes(registrationFunction: (app: Express | undefined) => undefined){
+	public registerRoutes(registrationFunction: (app: Express | undefined) => void){
 	    this.routeRegistration = registrationFunction;
 	    if(this.app){
 		this.routeRegistration(this.app);
